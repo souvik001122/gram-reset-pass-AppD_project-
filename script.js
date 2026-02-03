@@ -76,15 +76,13 @@ async function handleSubmit(event) {
         // Call Appwrite to update password
         await account.updateRecovery(userId, secret, password);
         
-        showSuccess('Password reset successful! You can now close this page and log in with your new password.');
+        showSuccess('✅ Password reset successful! You can now close this page and log in to the GramBazaar app with your new password.');
         
         // Clear form
         document.getElementById('resetForm').reset();
         
-        // Optionally redirect after 3 seconds
-        setTimeout(() => {
-            window.location.href = 'https://grambazaar.app'; // Change to your app URL
-        }, 3000);
+        // Hide form after success
+        document.getElementById('resetForm').style.display = 'none';
         
     } catch (error) {
         console.error('Reset password error:', error);
